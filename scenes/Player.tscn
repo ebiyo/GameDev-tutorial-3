@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://bisye7k7878jl"]
 
-[ext_resource type="Texture2D" uid="uid://b83s10q5xdw4w" path="res://assets/playerShip1_blue.png" id="1_8fr8l"]
 [ext_resource type="Script" uid="uid://ccnt6deyykprd" path="res://scenes/Player.gd" id="1_rpfd1"]
+[ext_resource type="Texture2D" uid="uid://7vg2j1865jam" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_idle.png" id="2_rpfd1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpfd1"]
-size = Vector2(98, 74)
+size = Vector2(61, 86)
 
-[node name="BlueShip" type="CharacterBody2D" unique_id=565002623]
+[node name="Player" type="CharacterBody2D" unique_id=565002623]
 script = ExtResource("1_rpfd1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1860452265]
+position = Vector2(0.5, 12)
 shape = SubResource("RectangleShape2D_rpfd1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1725249148]
-texture = ExtResource("1_8fr8l")
+texture = ExtResource("2_rpfd1")
