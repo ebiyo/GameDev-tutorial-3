@@ -50,8 +50,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed('ui_up') and jump_times > 0 and not is_crouching:
 		velocity.y = jump_speed
 		jump_times -= 1
-
-	var current_speed = crouch_speed if is_crouching else walk_speed
 	
 	if is_dashing:
 		velocity.x = sign(velocity.x) * dash_speed
@@ -98,7 +96,3 @@ func _physics_process(delta):
 	
 	# "move_and_slide" already takes delta time into account.
 	move_and_slide()
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
