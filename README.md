@@ -1,4 +1,17 @@
-## Proses Pengerjaan Fitur
+## Proses Pengerjaan Fitur (Tutorial 5)
+Karena melanjutkan tutorial 3, saya hanya tinggal mengubah dan menambahkan dari tutorial tersebut.
+
+- Mengubah Sprite2D menjadi AnimatedSprite2D dan memilih frame untuk setiap animation
+- Menambahkan perubahan sprite ketika jatuh
+- Menambahkan suara latar belakang menggunakan AudioStreamPlayer2D
+- Menambahkan mob `Bee` dengan membuat scene dengan root node CharacterBody2D
+- Membuat `Bee` bergerak secara random ke segala arah dan mengeluarkan suara secara random dengan pitch yang random juga
+- Membuat `Spawner` untuk mengespawn `Bee` dengan maksimum 10 lebah pada satu waktu dan akan despawn setelah 15 detik
+- Menambahkan area pada `Bee` untuk mendeteksi ketika player menyentuhnya dan membuat `Player` mengeluarkan suara kesakitan dengan menyuruh teman saya untuk me-record di Audacity dan menaikkan pitchnya
+- Menambahkan area collision pada bee agar player dapat menggunakannya sebagai platform untuk naik ke platform yang lebih tinggi (yang tidak bisa dijangkau dengan jump biasa)
+- Menambahkan easter egg pada platform yang lebih tinggi (hanya sebuah Sprite2D)
+
+## Proses Pengerjaan Fitur (Tutorial 3)
 #### Double jump
 - Intuisi: karakter dapat loncat 2 kali (tidak lebih), dan dapat loncat lagi setelah menyentuh tanah
 - Membuat var `jump_times` yang menyatakan banyak jump yang dapat dilakukan player (awalnya 0)
