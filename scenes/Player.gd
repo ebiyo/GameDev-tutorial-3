@@ -2,22 +2,18 @@ extends CharacterBody2D
 
 @export var gravity = 800.0
 @export var walk_speed = 300
-@export var jump_speed = -400
+@export var jump_speed = -450
 @export var jump_times = 0
 @export var crouch_speed = 150
 var is_crouching = false
 
 @onready var collshape = $CollisionShape2D
-@onready var sprite = $Sprite2D
-
-@export var idle_texture : Texture2D
-@export var crouch_texture : Texture2D
-@export var walk_texture : Texture2D
-@export var jump_texture : Texture2D
+@onready var sprite = $AnimatedSprite2D
 
 @export var dash_speed = 900
 @export var dash_time = 0.2
 @export var double_tap_window = 0.25
+@export var dash_direction = 0
 
 var is_dashing = false
 var dash_timer = 0.0
@@ -32,8 +28,8 @@ func _ready() -> void:
 func start_dash(direction):
 	is_dashing = true
 	dash_timer = dash_time
-	velocity.x = direction * dash_speed
-
+	dash_direction = direction
+	
 func _physics_process(delta):
 	velocity.y += delta * gravity
 	dash_timer -= delta
@@ -52,7 +48,7 @@ func _physics_process(delta):
 		jump_times -= 1
 	
 	if is_dashing:
-		velocity.x = sign(velocity.x) * dash_speed
+		velocity.x = dash_direction * dash_speed
 		if dash_timer <= 0:
 			is_dashing = false
 		move_and_slide()
@@ -85,14 +81,23 @@ func _physics_process(delta):
 		velocity.x = 0
 		
 	# Change sprite
-	if is_crouching:
-		sprite.texture = crouch_texture
+	if is_dashing:
+		play_anim("dash")
+	elif is_crouching:
+		play_anim("crouch")
 	elif not is_on_floor():
-		sprite.texture = jump_texture
+		if velocity.y < 0:
+			play_anim("jump")
+		else:
+			play_anim("fall")
 	elif velocity.x != 0:
-		sprite.texture = walk_texture
+		play_anim("walk")
 	else:
-		sprite.texture = idle_texture
+		play_anim("idle")
 	
 	# "move_and_slide" already takes delta time into account.
 	move_and_slide()
+
+func play_anim(name):
+	if sprite.animation != name:
+		sprite.play(name)

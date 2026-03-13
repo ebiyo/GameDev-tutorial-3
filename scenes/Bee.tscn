@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cu4scfwub8ahk"]
+
+[ext_resource type="Script" uid="uid://bq36gdscjcn24" path="res://Bee.gd" id="1_ghu41"]
+[ext_resource type="Texture2D" uid="uid://i7yyhihxa7r2" path="res://assets/kenney_platformercharacters/Vector/vector_enemies.svg" id="2_5djrf"]
+[ext_resource type="AudioStream" uid="uid://64b0tde1gixm" path="res://assets/ya-like-jazz-enhanced-v2.mp3" id="3_pjeov"]
+[ext_resource type="AudioStream" uid="uid://dajnhl5imwjrw" path="res://assets/fayed kena lebah.mp3" id="4_5djrf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghu41"]
+size = Vector2(44, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfh60"]
+atlas = ExtResource("2_5djrf")
+region = Rect2(274, 277, 69, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f131d"]
+atlas = ExtResource("2_5djrf")
+region = Rect2(343, 277, 69, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_se2c6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfh60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f131d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjeov"]
+size = Vector2(53, 37)
+
+[node name="Bee" type="CharacterBody2D" unique_id=462775245]
+script = ExtResource("1_ghu41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1050656887]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_ghu41")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759779640]
+sprite_frames = SubResource("SpriteFrames_se2c6")
+frame = 1
+frame_progress = 0.46851674
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1608267248]
+stream = ExtResource("3_pjeov")
+
+[node name="Hitsound" type="AudioStreamPlayer2D" parent="." unique_id=1609218169]
+stream = ExtResource("4_5djrf")
+volume_db = 10.0
+pitch_scale = 2.0
+attenuation = 1.25
+
+[node name="HurtArea" type="Area2D" parent="." unique_id=2086963575]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea" unique_id=1790725996]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_pjeov")
+
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]

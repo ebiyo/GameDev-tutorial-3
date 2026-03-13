@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://ds60n6krsavle" path="res://scenes/Ground.tscn" id="1_elqb8"]
 [ext_resource type="PackedScene" uid="uid://bisye7k7878jl" path="res://scenes/Player.tscn" id="2_rvslj"]
+[ext_resource type="AudioStream" uid="uid://q5us7thvt5fw" path="res://assets/assets_sound_bgm.wav" id="3_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://cu4scfwub8ahk" path="res://scenes/Bee.tscn" id="4_rarhs"]
+[ext_resource type="Script" uid="uid://chyu2fi4a8g1i" path="res://scenes/spawner.gd" id="5_vcsgt"]
+[ext_resource type="Texture2D" uid="uid://bb3ic6grhvtde" path="res://assets/sawittt.jpg" id="6_c01mt"]
 
 [node name="Root" type="Node2D" unique_id=918599496]
 
@@ -14,5 +18,30 @@ position = Vector2(856, 324)
 [node name="Ground3" parent="." unique_id=1648397147 instance=ExtResource("1_elqb8")]
 position = Vector2(576, 394)
 
+[node name="Ground4" parent="." unique_id=1745018742 instance=ExtResource("1_elqb8")]
+position = Vector2(1138, 254)
+
+[node name="Ground5" parent="." unique_id=1647847359 instance=ExtResource("1_elqb8")]
+position = Vector2(4, -120)
+
 [node name="Player" parent="." unique_id=565002623 instance=ExtResource("2_rvslj")]
 position = Vector2(576, 241)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=413785705]
+stream = ExtResource("3_0bbpv")
+volume_db = 10.0
+autoplay = true
+
+[node name="Bee" parent="." unique_id=1711686125 instance=ExtResource("4_rarhs")]
+visible = false
+position = Vector2(869, 195)
+
+[node name="Spawner" type="Node2D" parent="." unique_id=1817262928]
+position = Vector2(564, -44)
+script = ExtResource("5_vcsgt")
+obstacle = ExtResource("4_rarhs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=589104424]
+position = Vector2(2, -238.00002)
+scale = Vector2(0.8, 0.63)
+texture = ExtResource("6_c01mt")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dajnhl5imwjrw"
+path="res://.godot/imported/fayed kena lebah.mp3-4039e068a6f8fb3b388570cd76da9849.mp3str"
+
+[deps]
+
+source_file="res://assets/fayed kena lebah.mp3"
+dest_files=["res://.godot/imported/fayed kena lebah.mp3-4039e068a6f8fb3b388570cd76da9849.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
